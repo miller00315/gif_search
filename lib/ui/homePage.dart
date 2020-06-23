@@ -19,6 +19,7 @@ class _HomeState extends State<Home> {
   void _onSubmited(text) {
     setState(() {
       _search = text;
+      _offset = 0;
     });
   }
 

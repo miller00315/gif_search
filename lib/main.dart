@@ -22,6 +22,9 @@ void main() {
             color: Colors.white,
           ),
         ),
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
       ),
       debugShowCheckedModeBanner: false,
       home: Home(),
