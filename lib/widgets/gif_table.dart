@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gif_search/ui/git_page.dart';
+import 'package:gif_search/ui/gif_page.dart';
+import 'package:gif_search/widgets/gif_item.dart';
+import 'package:share/share.dart';
 
 Widget createGifTable(BuildContext context, AsyncSnapshot snapshot,
     Function getCount, Function loadMore) {
@@ -12,19 +14,7 @@ Widget createGifTable(BuildContext context, AsyncSnapshot snapshot,
     ),
     itemCount: getCount(snapshot.data['data']),
     itemBuilder: (context, index) => index < snapshot.data['data'].length
-        ? GestureDetector(
-            child: Image.network(
-              snapshot.data['data'][index]['images']['fixed_height']['url'],
-              height: 300.0,
-              fit: BoxFit.cover,
-            ),
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => GifPage(snapshot.data['data'][index]),
-              ),
-            ),
-          )
+        ? gifItem(snapshot.data['data'][index], context)
         : GestureDetector(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
